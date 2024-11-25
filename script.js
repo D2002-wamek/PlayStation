@@ -41,4 +41,9 @@ const gamesList = [
 			"https://i.ytimg.com/vi/pYk8Wsehc1k/maxresdefault.jpg",
 		id: 6,
 	},
+
 ]
+//gamesList.forEach
+gamesList.forEach((game) => {
+	console.log(game)
+})
