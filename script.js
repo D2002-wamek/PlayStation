@@ -43,7 +43,12 @@ const gamesList = [
 	},
 
 ]
+
 //gamesList.forEach
-gamesList.forEach((game) => {
-	console.log(game)
-})
+function writeDom (){
+    gamesList.forEach((game) => {
+	    console.log(game)
+    })
+}
+
+writeDom ()
