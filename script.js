@@ -49,9 +49,10 @@ function writeDom() {
 		const articleContainer = document.querySelector(".row")
 		articleContainer.innerHTML += `<article class="col">
                     <div class="card shadow-sm">
-                        <img src="2K25.jpg" class="card-img-top" alt="Nom du jeu">
+                        <img src="${game.imageUrl}" alt="${game.title}" class="card-img-top" />
                         <div class="card-body">
-                            <p class="card-text">Description du jeu.</p>
+                        <h3 class="card-title">${game.title}</h3>
+                            <p class="card-text">${game.year}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary"
@@ -64,7 +65,8 @@ function writeDom() {
                             </div>
                         </div>
                     </div>
-                </article> `
+                </article>  `
 	})
 }
 writeDom ()
+
