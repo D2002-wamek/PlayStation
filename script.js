@@ -44,11 +44,17 @@ const gamesList = [
 
 ]
 
-//gamesList.forEach
+/*gamesList.forEach
 function writeDom (){
     gamesList.forEach((game) => {
 	    console.log(game)
     })
 }
-
+*/
+function writeDom() {
+	gamesList.forEach((game) => {
+		const articleContainer = document.querySelector(".row")
+		articleContainer.innerHTML = "Hello !!"
+	})
+}
 writeDom ()
