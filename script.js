@@ -24,7 +24,7 @@ const gamesList = [
 		title: "Call of duty",
 		year: 2020,
 		imageUrl:
-			"https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blackops6/meta/BO6_LP-meta_image.jpg",
+			"https://cdn-uploads.gameblog.fr/img/news/567352_6655e91f1acb0.jpg",
 		id: 4,
 	},
 	{
