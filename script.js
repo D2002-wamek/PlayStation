@@ -47,7 +47,24 @@ const gamesList = [
 function writeDom() {
 	gamesList.forEach((game) => {
 		const articleContainer = document.querySelector(".row")
-		articleContainer.innerHTML += `<h2>${game.title} </h2>`
+		articleContainer.innerHTML += `<article class="col">
+                    <div class="card shadow-sm">
+                        <img src="2K25.jpg" class="card-img-top" alt="Nom du jeu">
+                        <div class="card-body">
+                            <p class="card-text">Description du jeu.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article> `
 	})
 }
 writeDom ()
