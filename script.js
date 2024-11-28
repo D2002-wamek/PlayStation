@@ -64,7 +64,7 @@ function writeDom() {
                                     </button>
                                     <button 
                                         type="button" 
-                                        class="btn btn-sm btn-outline-secondary"
+                                        class="btn btn-sm btn-outline-secondary edit"
                                         data-bs-toggle="modal" data-bs-target="#exampleModal"
                                     >
                                         Edit
@@ -76,8 +76,10 @@ function writeDom() {
                 </article>  `
 	})
 }
+
 writeDom ()
 
 const editButtons = document.querySelectorAll(".edit")
 console.log(editButtons)
+
 
