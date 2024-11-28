@@ -78,3 +78,6 @@ function writeDom() {
 }
 writeDom ()
 
+const editButtons = document.querySelectorAll(".edit")
+console.log(editButtons)
+
