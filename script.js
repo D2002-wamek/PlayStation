@@ -75,16 +75,13 @@ function writeDom() {
                     </div>
                 </article>  `
 	})
+	
 }
 
-writeDom ()
-const editButtons = document.querySelectorAll(".edit")
-console.log(editButtons)
+writeDom ();
 
-
-
-
-
+const editButtons = document.querySelectorAll(".edit");
+console.log(editButtons);
 
 
 
