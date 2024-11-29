@@ -93,9 +93,10 @@ function editModal(gameId) {
 	// console.log(gameId, gamesList)
 	// Trouvez le jeu en fonction de son identifiant
 	const result = gamesList.findIndex((game) => game.id === parseInt(gameId))
-	modifyModal("Mode Edition")
+	// passer une image comme corps du modal
+	const modalBody = `<h4>ajoutez un formulaire pour modifier le jeu ici</h4>`
+	modifyModal("Mode Edition", modalBody)
 }
-
 function modifyModal(modalTitle, modalBody) {
 	// Écrir le nom du jeu dans le titre du modal
 	document.querySelector(".modal-title").textContent = modalTitle
