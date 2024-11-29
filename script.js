@@ -84,8 +84,15 @@ writeDom ()
 const editButtons = document.querySelectorAll(".edit")
 editButtons.forEach((btn) => {
 	btn.addEventListener("click", (e) => {
-		console.log(e.target.getAttribute("data-edit-id"))
+		editModal(e.target.getAttribute("data-edit-id"))
 	})
 })
 
+function editModal(gameId) {
+	// console.log(gameId, gamesList)
+	// Trouvez le jeu en fonction de son identifiant
+	const result = gamesList.findIndex((game) => game.id === parseInt(gameId))
+	// Écrir le nom du jeu dans le titre du modal
+	document.querySelector(".modal-title").textContent = "Mode Edition"
+}
 
