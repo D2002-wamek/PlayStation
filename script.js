@@ -57,8 +57,9 @@ function writeDom() {
                                 <div class="btn-group">
                                     <button 
                                         type="button" 
-                                        class="btn btn-sm btn-outline-secondary"
+                                        class="btn btn-sm btn-outline-secondary view"
                                         data-bs-toggle="modal" data-bs-target="#exampleModal"
+										data-edit-id="${game.id}"
                                     >
                                         View
                                     </button>
@@ -85,6 +86,13 @@ const editButtons = document.querySelectorAll(".edit")
 editButtons.forEach((btn) => {
 	btn.addEventListener("click", (e) => {
 		editModal(e.target.getAttribute("data-edit-id"))
+	})
+})
+
+const viewButtons = document.querySelectorAll(".view")
+viewButtons.forEach((btn) => {
+	btn.addEventListener("click", (e) => {
+		console.log(e.target.getAttribute("data-edit-id"))
 	})
 })
 
