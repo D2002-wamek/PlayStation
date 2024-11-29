@@ -96,9 +96,10 @@ function editModal(gameId) {
 	modifyModal("Mode Edition")
 }
 
-function modifyModal(modalTitle) {
+function modifyModal(modalTitle, modalBody) {
 	// Écrir le nom du jeu dans le titre du modal
 	document.querySelector(".modal-title").textContent = modalTitle
+	document.querySelector(".modal-body").innerHTML = modalBody
 }
 
 const viewButtons = document.querySelectorAll(".view")
