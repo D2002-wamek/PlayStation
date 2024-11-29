@@ -89,13 +89,6 @@ editButtons.forEach((btn) => {
 	})
 })
 
-const viewButtons = document.querySelectorAll(".view")
-viewButtons.forEach((btn) => {
-	btn.addEventListener("click", (e) => {
-		console.log(e.target.getAttribute("data-edit-id"))
-	})
-})
-
 function editModal(gameId) {
 	// console.log(gameId, gamesList)
 	// Trouvez le jeu en fonction de son identifiant
@@ -107,3 +100,18 @@ function modifyModal(modalTitle) {
 	// Écrir le nom du jeu dans le titre du modal
 	document.querySelector(".modal-title").textContent = modalTitle
 }
+
+const viewButtons = document.querySelectorAll(".view")
+viewButtons.forEach((btn) => {
+	btn.addEventListener("click", (e) => {
+		viewModal(e.target.getAttribute("data-edit-id"))
+	})
+})
+
+function viewModal(gameId) {
+	// console.log(gameId, gamesList)
+	// Trouvez le jeu en fonction de son identifiant
+	const result = gamesList.findIndex((game) => game.id === parseInt(gameId))
+	modifyModal(gamesList[result].title)
+}
+
