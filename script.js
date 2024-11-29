@@ -113,6 +113,6 @@ function viewModal(gameId) {
 	// console.log(gameId, gamesList)
 	// Trouvez le jeu en fonction de son identifiant
 	const result = gamesList.findIndex((game) => game.id === parseInt(gameId))
-	modifyModal(gamesList[result].title)
+	const modalBody = `<h2>Hello world !!</h2>`
+	modifyModal(gamesList[result].title, modalBody)
 }
-
