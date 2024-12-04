@@ -96,17 +96,20 @@ function editModal(gameId) {
 	fetch("./form.html").then((data) => {
 		data.text().then((form) => {
 			// Modifiez le titre et le corps du modal
+			const selectedGame = gamesList[result]
 			modifyModal("Mode Edition", form)
-			modifyFom()
+			modifyFom({
+				title: selectedGame.title,
+				year: selectedGame.year,
+				imageUrl: selectedGame.imageUrl,
+			})
 		})
 	})
-	const selectedGame = gamesList[result]
-	console.log(selectedGame)
 }
 
-function modifyFom() {
+function modifyFom(gameData) {
 	const form = document.querySelector("form")
-	console.log(form)
+	console.log(gameData)
 }
 
 function modifyModal(modalTitle, modalBody) {
