@@ -109,7 +109,9 @@ function editModal(gameId) {
 
 function modifyFom(gameData) {
 	const form = document.querySelector("form")
-	console.log(gameData)
+	form.title.value = gameData.title
+	form.year.value = gameData.year
+	form.imageUrl.value = gameData.imageUrl
 }
 
 function modifyModal(modalTitle, modalBody) {
