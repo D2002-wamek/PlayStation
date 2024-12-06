@@ -82,7 +82,7 @@ function writeDom() {
 
 writeDom ()
 
-const editButtons = document.querySelectorAll(".edit")
+editButtons = document.querySelectorAll(".edit")
 editButtons.forEach((btn) => {
 	btn.addEventListener("click", (e) => {
 		editModal(e.target.getAttribute("data-edit-id"))
@@ -173,7 +173,7 @@ function modifyModal(modalTitle, modalBody) {
 </form>`
 }
 
-const viewButtons = document.querySelectorAll(".view")
+viewButtons = document.querySelectorAll(".view")
 viewButtons.forEach((btn) => {
 	btn.addEventListener("click", (e) => {
 		viewModal(e.target.getAttribute("data-edit-id"))
