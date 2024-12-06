@@ -113,20 +113,6 @@ function editModal(gameId) {
 		
 	})
 }
-/*
-function updateGames(title, year, imageUrl, gameId) {
-	console.log(title, year, imageUrl, gameId)
-}
-
-function updateGames(title, year, imageUrl, gameId) {
-	// Trouvez le jeu en fonction de son identifiant
-	const index = gamesList.findIndex((game) => game.id === parseInt(gameId))
-
-	gamesList[index].title = title
-	gamesList[index].year = year
-	gamesList[index].imageUrl = imageUrl
-	console.log(gamesList[index])
-}*/
 
 function updateGames(title, year, imageUrl, gameId) {
 	// Trouvez le jeu en fonction de son identifiant
@@ -179,15 +165,7 @@ viewButtons.forEach((btn) => {
 		viewModal(e.target.getAttribute("data-edit-id"))
 	})
 })
-/*
-function viewModal(gameId) {
-	// console.log(gameId, gamesList)
-	// Trouvez le jeu en fonction de son identifiant
-	const result = gamesList.findIndex((game) => game.id === parseInt(gameId))
-	const modalBody = `<img src="${gamesList[result].imageUrl}" alt="${gamesList[result].title}" class="img-fluid" />`
-	modifyModal(gamesList[result].title, modalBody)
-}
-*/
+
 function viewModal(gameId) {
 	// console.log(gameId, gamesList)
 	// Trouvez le jeu en fonction de son identifiant
@@ -203,3 +181,4 @@ function viewModal(gameId) {
 		</button>
 </form>`
 }
+
