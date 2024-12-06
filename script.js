@@ -110,6 +110,10 @@ function editModal(gameId) {
 	})
 }
 
+function updateGames() {
+	console.log("running update games ...")
+}
+
 function modifyFom(gameData) {
 	const form = document.querySelector("form")
 	form.title.value = gameData.title
