@@ -114,8 +114,8 @@ function editModal(gameId) {
 	})
 }
 
-function updateGames() {
-	console.log("running update games ...")
+function updateGames(title, year, imageUrl, gameId) {
+	console.log(title, year, imageUrl, gameId)
 }
 
 function modifyFom(gameData) {
