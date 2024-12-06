@@ -104,6 +104,9 @@ function editModal(gameId) {
 				imageUrl: selectedGame.imageUrl,
 			})
 		})
+		document
+		.querySelector('button[type="submit"]')
+		.addEventListener("click", updateGames)
 	})
 }
 
@@ -113,13 +116,7 @@ function modifyFom(gameData) {
 	form.year.value = gameData.year
 	form.imageUrl.value = gameData.imageUrl
 }
-/*
-function modifyModal(modalTitle, modalBody) {
-	// Écrir le nom du jeu dans le titre du modal
-	document.querySelector(".modal-title").textContent = modalTitle
-	document.querySelector(".modal-body").innerHTML = modalBody
-}
-*/
+
 function modifyModal(modalTitle, modalBody) {
 	// Écrire le nom du jeu dans le titre du modal
 	document.querySelector(".modal-title").textContent = modalTitle
