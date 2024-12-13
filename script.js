@@ -22,42 +22,59 @@ fetch("http://localhost:3000/api/cars", {
 		console.error("Erreur lors de la récupération des voitures :", error)
 	)
 
+
 function writeDom() {
-	gamesList.forEach((game) => {
-		const articleContainer = document.querySelector(".row")
-		articleContainer.innerHTML += `<article class="col">
-                    <div class="card shadow-sm">
-                        <img src="${game.imageUrl}" alt="${game.title}" class="card-img-top" />
-                        <div class="card-body">
-                        <h3 class="card-title">${game.title}</h3>
-                            <p class="card-text">${game.year}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button 
-                                        type="button" 
-                                        class="btn btn-sm btn-outline-secondary view"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal"
-										data-edit-id="${game.id}"
-                                    >
-                                        View
-                                    </button>
-                                    <button 
-                                        type="button" 
-                                        class="btn btn-sm btn-outline-secondary edit"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal"
-										data-edit-id="${game.id}"
-                                    >
-                                        Edit
-                                    </button>
-                                </div>
+    const articleContainer = document.querySelector(".row");
+    articleContainer.innerHTML = ""; // Réinitialiser le contenu pour éviter les doublons
+
+    // Parcourez la liste des voitures et générez le HTML
+    carsList.forEach((car) => {
+        articleContainer.innerHTML += `
+            <article class="col">
+                <div class="card shadow-sm">
+                    <img src="${car.carImage}" alt="${car.carName}" class="card-img-top" />
+                    <div class="card-body">
+                        <h3 class="card-title">${car.carName}</h3>
+                        <p class="card-text">Année: ${car.carYear}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button 
+                                    type="button" 
+                                    class="btn btn-sm btn-outline-secondary view"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    data-edit-id="${car.id}">
+                                    Voir
+                                </button>
+                                <button 
+                                    type="button" 
+                                    class="btn btn-sm btn-outline-secondary edit"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    data-edit-id="${car.id}">
+                                    Modifier
+                                </button>
                             </div>
                         </div>
                     </div>
-                </article>  `
-	})
-	
-}
+                </div>
+            </article>
+        `;
+    });
 
+    // Ajouter les événements pour les boutons
+    const editButtons = document.querySelectorAll(".edit");
+    editButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            editModal(e.target.getAttribute("data-edit-id"));
+        });
+    });
+
+    const viewButtons = document.querySelectorAll(".view");
+    viewButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            viewModal(e.target.getAttribute("data-edit-id"));
+        });
+    });
+}
 
 editButtons = document.querySelectorAll(".edit")
 editButtons.forEach((btn) => {
