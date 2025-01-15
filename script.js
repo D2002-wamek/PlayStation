@@ -85,28 +85,52 @@ editButtons.forEach((btn) => {
 
 function editModal(gameId) {
 	// Trouvez le jeu en fonction de son identifiant
-	const result = gamesList.findIndex((game) => game.id === parseInt(gameId))
-	// Injectez le formulaire dans le corps du modal
-	fetch("./form.html").then((data) => {
-		data.text().then((form) => {
-			// Modifiez le titre et le corps du modal
-			const selectedGame = gamesList[result]
-			modifyModal("Mode Edition", form)
-			modifyFom({
-				title: selectedGame.title,
-				year: selectedGame.year,
-				imageUrl: selectedGame.imageUrl,
-			})
-			document
-				.querySelector('button[type="submit"]')
-				.addEventListener("click", () =>
-					updateGames(title.value, year.value, imageUrl.value, gameId)
-				)
-
-		})
-		
+	console.log(gameId)
+	// fetch car by ID // http://localhost:3000/api/cars/1
+	fetch(`http://localhost:3000/api/cars/${gameId}`, {
+		method: "GET",
+		headers: {
+			"x-api-key": "secret_phrase_here",
+			"Content-Type": "application/json",
+			Accept: "application/json",
+		},
 	})
+		.then((res) => {
+			if (!res.ok) {
+				throw new Error("Error with the car with this id")
+			}
+			res.json().then((data) => {
+				console.log(data)
+				const selectedCar = data
+
+				// Injectez le formulaire dans le corps du modal
+				fetch("./form.html").then((data) => {
+					console.log(selectedCar)
+
+					data.text().then((form) => {
+						// Modifiez le titre et le corps du modal
+
+						modifyModal("Mode Edition", form)
+						modifyFom({
+							title: selectedCar.carName,
+							year: selectedCar.carYear,
+							imageUrl: selectedCar.carImage,
+						})
+						document.querySelector(".form-img").src = selectedCar.carImage
+						document
+							.querySelector('button[type="submit"]')
+							.addEventListener("click", () =>
+								updateGames(title.value, year.value, imageUrl.value, gameId)
+							)
+					})
+				})
+			})
+		})
+		.catch((error) =>
+			console.error("Erreur lors de la récupération des voitures :", error)
+		)
 }
+
 
 function updateGames(title, year, imageUrl, gameId) {
 	// Trouvez le jeu en fonction de son identifiant
@@ -161,18 +185,36 @@ viewButtons.forEach((btn) => {
 })
 
 function viewModal(gameId) {
-	// console.log(gameId, gamesList)
 	// Trouvez le jeu en fonction de son identifiant
-	const result = gamesList.findIndex((game) => game.id === parseInt(gameId))
-	// passer une image comme corps du modal
-	const modalBody = `<img src="${gamesList[result].imageUrl}" alt="${gamesList[result].title}" class="img-fluid" />`
-	modifyModal(gamesList[result].title, modalBody)
-	// edit footer
-	// Écrire dans le footer
-	document.querySelector(".modal-footer").innerHTML = `
+	fetch(`http://localhost:3000/api/cars/${gameId}`, {
+		method: "GET",
+		headers: {
+			"x-api-key": "secret_phrase_here",
+			"Content-Type": "application/json",
+			Accept: "application/json",
+		},
+	})
+		.then((res) => {
+			if (!res.ok) {
+				throw new Error("Error with the car with this id")
+			}
+			res.json().then((data) => {
+				console.log(data)
+				const selectedCar = data
+				// passer une image comme corps du modal
+				const modalBody = `<img src="${selectedCar.carImage}" alt="${selectedCar.carName}" class="img-fluid" />`
+				modifyModal(selectedCar.carName, modalBody)
+				// edit footer
+				// Écrire dans le footer
+				document.querySelector(".modal-footer").innerHTML = `
 		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
 			Close
 		</button>
 </form>`
+			})
+		})
+		.catch((error) =>
+			console.error("Erreur lors de la récupération des voitures :", error)
+		)
 }
 
