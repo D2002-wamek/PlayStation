@@ -25,8 +25,8 @@ form.addEventListener("submit", (e) => {
       email,
       userName,
     };
-    console.log(formdata)
-    //logIn(formdata);
+    
+    logIn(formdata);
   });
   
 
@@ -62,4 +62,32 @@ function showError(error) {
 	setTimeout(() => {
 		document.querySelector(".alert").classList.add("d-none")
 	}, 2100)
+}
+
+function logIn(formdata) {
+	const url = "http://localhost:3000/api/users/login"
+	fetch(url, {
+		method: "POST",
+		headers: {
+			"x-api-key": "secret_phrase_here",
+			"Content-Type": "application/json",
+			Accept: "application/json",
+		},
+		body: JSON.stringify(formdata),
+	})
+		.then((res) => {
+			if (!res.ok) {
+				throw new Error("Identifiants incorrects")
+			}
+			return res.json().then((data) => {
+				console.log(data)
+				localStorage.setItem("_id", data._id)
+				localStorage.setItem("token", data.token)
+				localStorage.setItem("img", data.userImg)
+				// window.location.pathname = "/"
+			})
+		})
+		.catch((error) => {
+			showError(error)
+		})
 }
