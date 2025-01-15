@@ -26,7 +26,7 @@ form.addEventListener("submit", (e) => {
       userName,
     };
     console.log(formdata)
-    //logIn(formdata);
+    logIn(formdata);
   });
   
 
