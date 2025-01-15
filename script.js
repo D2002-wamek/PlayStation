@@ -131,7 +131,7 @@ function editModal(gameId) {
 		)
 }
 
-
+/*
 function updateGames(title, year, imageUrl, gameId) {
 	// Trouvez le jeu en fonction de son identifiant
 	const index = gamesList.findIndex((game) => game.id === parseInt(gameId))
@@ -155,6 +155,28 @@ function updateGames(title, year, imageUrl, gameId) {
 		})
 	})
 }
+*/
+function updateGames(title, year, imageUrl, carId) {
+	// Créez un objet de données à envoyer au backend.
+	const formdata = {
+	  title,
+	  year,
+	  imageUrl,
+	  carId,
+	};
+  
+	// Fetch car by ID
+	fetch(`http://localhost:3000/api/cars/${carId}`, {
+	  method: "PUT",
+	  headers: {
+		"x-api-key": "secret_phrase_here",
+		"Content-Type": "application/json",
+		Accept: "application/json",
+	  },
+	  body: JSON.stringify(formdata),
+	});
+  }
+  
 
 function modifyFom(gameData) {
 	const form = document.querySelector("form")
